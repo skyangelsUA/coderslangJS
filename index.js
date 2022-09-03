@@ -70,15 +70,10 @@
 //   console.log(`${fruit} is a red fruit!`);
 // }
 
-const array1 = [1,2,3,4,5,6,7,8,9];
-const array2 = [1,2,3,4,5,6];
-function getCommonElements(array1, array2) {
+const array1 = 100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000;
 
-    for (let i = 0; i < array1.length; i++) {
-      console.log(array1[i]);
-    }
-
-  for (let i = 0; i < array2.length; i++) {
-      console.log(array2[i]);
-    }
+for (let i = 0; i < array1; i++) {
+  console.log(array1[i]);
+  return array1[i]
 }
+    console.log(array1[i]);
