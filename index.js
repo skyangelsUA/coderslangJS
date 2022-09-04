@@ -70,10 +70,46 @@
 //   console.log(`${fruit} is a red fruit!`);
 // }
 
-const array1 = 100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000;
+// const array1 = 100000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000000;
 
-for (let i = 0; i < array1; i++) {
-  console.log(array1[i]);
-  return array1[i]
+// for (let i = 0; i < array1; i++) {
+//   console.log(array1[i]);
+//   return array1[i]
+// }
+//     console.log(array1[i]);
+
+
+
+const STORAGE_KEY = "feedback-form-state";
+
+const form = document.querySelector(".feedback-form");
+const email = document.querySelector('[name="email"]');
+const message = document.querySelector('[name="message"]');
+
+form.addEventListener("submit", onFormSubmit);
+form.addEventListener("input", throttle(onFormData, 500));
+
+function onFormSubmit(evt) {
+  evt.preventDefault();
+  evt.currentTarget.reset();
+  console.log(localStorage.getItem(STORAGE_KEY));
+  localStorage.removeItem(STORAGE_KEY);
 }
-    console.log(array1[i]);
+
+function onFormData() {
+  const formData = {
+    email: email.value,
+    message: message.value,
+  };
+  localStorage.setItem(STORAGE_KEY, JSON.stringify(formData));
+}
+
+localStorageSaveData();
+
+function localStorageSaveData() {
+  let savedData = JSON.parse(localStorage.getItem(STORAGE_KEY));
+  if (savedData) {
+    email.value = savedData.email;
+    message.value = savedData.message;
+  }
+}
